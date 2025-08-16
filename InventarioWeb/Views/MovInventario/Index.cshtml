@@ -1,0 +1,291 @@
+@using InventarioWeb.ViewModels
+@model MovInventarioIndexViewModel
+@{
+    ViewData["Title"] = "Movimientos de Inventario";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <!-- Filtros de búsqueda -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Filtros de Búsqueda</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Index" method="get">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.FechaInicio" class="form-label"></label>
+                                    <input asp-for="SearchModel.FechaInicio" class="form-control" type="date" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.FechaFin" class="form-label"></label>
+                                    <input asp-for="SearchModel.FechaFin" class="form-control" type="date" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.TipoMovimiento" class="form-label"></label>
+                                    <input asp-for="SearchModel.TipoMovimiento" class="form-control" maxlength="2" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.NroDocumento" class="form-label"></label>
+                                    <input asp-for="SearchModel.NroDocumento" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.CodCia" class="form-label"></label>
+                                    <input asp-for="SearchModel.CodCia" class="form-control" maxlength="5" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.CompaniaVenta3" class="form-label"></label>
+                                    <input asp-for="SearchModel.CompaniaVenta3" class="form-control" maxlength="5" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.AlmacenVenta" class="form-label"></label>
+                                    <input asp-for="SearchModel.AlmacenVenta" class="form-control" maxlength="10" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.TipoDocumento" class="form-label"></label>
+                                    <input asp-for="SearchModel.TipoDocumento" class="form-control" maxlength="2" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.CodItem2" class="form-label"></label>
+                                    <input asp-for="SearchModel.CodItem2" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.Proveedor" class="form-label"></label>
+                                    <input asp-for="SearchModel.Proveedor" class="form-control" maxlength="100" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.AlmacenDestino" class="form-label"></label>
+                                    <input asp-for="SearchModel.AlmacenDestino" class="form-control" maxlength="10" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.DocRef1" class="form-label"></label>
+                                    <input asp-for="SearchModel.DocRef1" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.DocRef2" class="form-label"></label>
+                                    <input asp-for="SearchModel.DocRef2" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.DocRef3" class="form-label"></label>
+                                    <input asp-for="SearchModel.DocRef3" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.DocRef4" class="form-label"></label>
+                                    <input asp-for="SearchModel.DocRef4" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="SearchModel.DocRef5" class="form-label"></label>
+                                    <input asp-for="SearchModel.DocRef5" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Buscar
+                                </button>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Limpiar
+                                </a>
+                                <a asp-action="Create" class="btn btn-success">
+                                    <i class="fas fa-plus"></i> Nuevo Movimiento
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabla de resultados -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Resultados (@Model.MovInventarios.Count registros)</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.MovInventarios.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Cía</th>
+                                        <th>Cía Venta</th>
+                                        <th>Almacén</th>
+                                        <th>Tipo Mov</th>
+                                        <th>Tipo Doc</th>
+                                        <th>Nro Doc</th>
+                                        <th>Item</th>
+                                        <th>Proveedor</th>
+                                        <th>Almacén Destino</th>
+                                        <th>Ref 1</th>
+                                        <th>Ref 2</th>
+                                        <th>Ref 3</th>
+                                        <th>Ref 4</th>
+                                        <th>Ref 5</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.MovInventarios)
+                                    {
+                                        <tr>
+                                            <td>@item.CodCia</td>
+                                            <td>@item.CompaniaVenta3</td>
+                                            <td>@item.AlmacenVenta</td>
+                                            <td>@item.TipoMovimiento</td>
+                                            <td>@item.TipoDocumento</td>
+                                            <td>@item.NroDocumento</td>
+                                            <td>@item.CodItem2</td>
+                                            <td>@(item.Proveedor ?? "-")</td>
+                                            <td>@(item.AlmacenDestino ?? "-")</td>
+                                            <td>@(item.DocRef1 ?? "-")</td>
+                                            <td>@(item.DocRef2 ?? "-")</td>
+                                            <td>@(item.DocRef3 ?? "-")</td>
+                                            <td>@(item.DocRef4 ?? "-")</td>
+                                            <td>@(item.DocRef5 ?? "-")</td>
+                                            <td>@(item.Cantidad?.ToString() ?? "-")</td>
+                                            <td>@(item.FechaTransaccion?.ToString("dd/MM/yyyy") ?? "-")</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <a asp-action="Edit" 
+                                                       asp-route-codCia="@item.CodCia"
+                                                       asp-route-companiaVenta3="@item.CompaniaVenta3"
+                                                       asp-route-almacenVenta="@item.AlmacenVenta"
+                                                       asp-route-tipoMovimiento="@item.TipoMovimiento"
+                                                       asp-route-tipoDocumento="@item.TipoDocumento"
+                                                       asp-route-nroDocumento="@item.NroDocumento"
+                                                       asp-route-codItem2="@item.CodItem2"
+                                                       class="btn btn-sm btn-outline-primary" 
+                                                       title="Editar">Editar
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" 
+                                                            class="btn btn-sm btn-outline-danger" 
+                                                            title="Eliminar"
+                                                            onclick="confirmDelete('@item.CodCia', '@item.CompaniaVenta3', '@item.AlmacenVenta', '@item.TipoMovimiento', '@item.TipoDocumento', '@item.NroDocumento', '@item.CodItem2')">
+                                                        Eliminar<i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-4">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">No se encontraron movimientos de inventario con los filtros aplicados.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación para eliminar -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea eliminar este movimiento de inventario?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" method="post" asp-action="Delete" style="display: inline;">
+                    <input type="hidden" name="codCia" id="deleteCodCia" />
+                    <input type="hidden" name="companiaVenta3" id="deleteCompaniaVenta3" />
+                    <input type="hidden" name="almacenVenta" id="deleteAlmacenVenta" />
+                    <input type="hidden" name="tipoMovimiento" id="deleteTipoMovimiento" />
+                    <input type="hidden" name="tipoDocumento" id="deleteTipoDocumento" />
+                    <input type="hidden" name="nroDocumento" id="deleteNroDocumento" />
+                    <input type="hidden" name="codItem2" id="deleteCodItem2" />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(codCia, companiaVenta3, almacenVenta, tipoMovimiento, tipoDocumento, nroDocumento, codItem2) {
+            document.getElementById('deleteCodCia').value = codCia;
+            document.getElementById('deleteCompaniaVenta3').value = companiaVenta3;
+            document.getElementById('deleteAlmacenVenta').value = almacenVenta;
+            document.getElementById('deleteTipoMovimiento').value = tipoMovimiento;
+            document.getElementById('deleteTipoDocumento').value = tipoDocumento;
+            document.getElementById('deleteNroDocumento').value = nroDocumento;
+            document.getElementById('deleteCodItem2').value = codItem2;
+            
+            var modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            modal.show();
+        }
+    </script>
+}

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventarioWeb", "InventarioWeb.csproj", "{33808707-7246-44CD-89E2-05D4CDDA383E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.Inventario.BusinessLogicLayer", "..\1.Inventario.BusinessLogicLayer\1.Inventario.BusinessLogicLayer.csproj", "{B6C282F3-2EA1-43DF-95B5-677DC1952155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Inventario.DataAccessLayer", "..\2.Inventario.DataAccessLayer\2.Inventario.DataAccessLayer.csproj", "{82C9F102-7EFD-46D8-9250-6CFC0479F81C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A5E836A7-CBA1-4447-A287-10C72A4A7BDA}"
+	ProjectSection(SolutionItems) = preProject
+		..\Scripts\00_ExecuteAll.sql = ..\Scripts\00_ExecuteAll.sql
+		..\Scripts\01_CreateTable_MOV_INVENTARIO.sql = ..\Scripts\01_CreateTable_MOV_INVENTARIO.sql
+		..\Scripts\02_SP_ConsultarMovInventario.sql = ..\Scripts\02_SP_ConsultarMovInventario.sql
+		..\Scripts\03_SP_InsertarMovInventario.sql = ..\Scripts\03_SP_InsertarMovInventario.sql
+		..\Scripts\04_SP_ActualizarMovInventario.sql = ..\Scripts\04_SP_ActualizarMovInventario.sql
+		..\Scripts\05_SP_EliminarMovInventario.sql = ..\Scripts\05_SP_EliminarMovInventario.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33808707-7246-44CD-89E2-05D4CDDA383E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33808707-7246-44CD-89E2-05D4CDDA383E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33808707-7246-44CD-89E2-05D4CDDA383E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33808707-7246-44CD-89E2-05D4CDDA383E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C282F3-2EA1-43DF-95B5-677DC1952155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C282F3-2EA1-43DF-95B5-677DC1952155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C282F3-2EA1-43DF-95B5-677DC1952155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C282F3-2EA1-43DF-95B5-677DC1952155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C9F102-7EFD-46D8-9250-6CFC0479F81C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C9F102-7EFD-46D8-9250-6CFC0479F81C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C9F102-7EFD-46D8-9250-6CFC0479F81C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C9F102-7EFD-46D8-9250-6CFC0479F81C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3B6F3F6-8B02-4D43-9A10-17EDEC15DE72}
+	EndGlobalSection
+EndGlobal

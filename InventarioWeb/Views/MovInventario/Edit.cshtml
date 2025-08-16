@@ -1,0 +1,169 @@
+@using InventarioWeb.ViewModels
+@model MovInventarioViewModel
+@{
+    ViewData["Title"] = "Editar Movimiento de Inventario";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input asp-for="Id" type="hidden" />
+                        <!-- Campos de clave primaria como hidden -->
+                        <input asp-for="CodCia" type="hidden" />
+                        <input asp-for="CompaniaVenta3" type="hidden" />
+                        <input asp-for="AlmacenVenta" type="hidden" />
+                        <input asp-for="TipoMovimiento" type="hidden" />
+                        <input asp-for="TipoDocumento" type="hidden" />
+                        <input asp-for="NroDocumento" type="hidden" />
+                        <input asp-for="CodItem2" type="hidden" />
+                        
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <!-- Mostrar información del registro (solo lectura) -->
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">Información del Movimiento</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Código Compañía:</strong> @Model.CodCia
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Compañía Venta:</strong> @Model.CompaniaVenta3
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Almacén:</strong> @Model.AlmacenVenta
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <strong>Tipo Movimiento:</strong> @Model.TipoMovimiento
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Tipo Documento:</strong> @Model.TipoDocumento
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Nro Documento:</strong> @Model.NroDocumento
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <strong>Código Producto:</strong> @Model.CodItem2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Campos editables -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Información Editable</h5>
+                            </div>
+                            <div class="card-body">
+                            </div>
+                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="Proveedor" class="form-label"></label>
+                                            <input asp-for="Proveedor" class="form-control" maxlength="100" />
+                                            <span asp-validation-for="Proveedor" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="AlmacenDestino" class="form-label"></label>
+                                            <input asp-for="AlmacenDestino" class="form-control" maxlength="50" />
+                                            <span asp-validation-for="AlmacenDestino" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Cantidad" class="form-label"></label>
+                                    <input asp-for="Cantidad" class="form-control" type="number" min="0" />
+                                    <span asp-validation-for="Cantidad" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="FechaTransaccion" class="form-label"></label>
+                                    <input asp-for="FechaTransaccion" class="form-control" type="date" />
+                                    <span asp-validation-for="FechaTransaccion" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Referencias -->
+                        <hr>
+                        <h5>Referencias</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DocRef1" class="form-label"></label>
+                                    <input asp-for="DocRef1" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="DocRef1" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DocRef2" class="form-label"></label>
+                                    <input asp-for="DocRef2" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="DocRef2" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DocRef3" class="form-label"></label>
+                                    <input asp-for="DocRef3" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="DocRef3" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DocRef4" class="form-label"></label>
+                                    <input asp-for="DocRef4" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="DocRef4" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DocRef5" class="form-label"></label>
+                                    <input asp-for="DocRef5" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="DocRef5" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botones -->
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Actualizar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Volver
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
